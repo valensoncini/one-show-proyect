@@ -1,0 +1,521 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: #a6a6a6;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+   
+}
+
+
+
+.contenedor{
+    background-color: #a6a6a6;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 100px 2fr 2fr auto;
+    gap: 10px;
+    
+}
+
+.contenedor .header-nav{
+    grid-row: 1 / 2;
+    width: 100%;
+}
+
+.contenedor .contenido{
+
+    padding: 2px;
+
+    grid-row: 2 / 3;
+    background-color: #a6a6a6;
+}
+
+.contenedor .shows{
+  
+
+    grid-row: 3 / 4;
+   
+
+}
+
+
+.contenedor .footer{
+    grid-row: 4 / -1;
+    width: 100%;
+    height: auto;
+    padding: 2px;
+    
+    background-color: #161516;
+    color: white;
+
+}
+
+.footer-container{
+   
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  
+}
+
+.datos-footer div{
+    display: flex;
+    justify-content: start;
+}
+
+.datos-footer div i{
+    margin-top: 5px;
+}
+.datos-footer div p{
+    margin-left: 5px;
+}
+
+
+.navegacion-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.navegacion-footer a:hover{
+    color: black;
+    border: 3px solid white;
+    border-radius: 10px;
+    background-color:white;
+
+}
+
+
+
+
+
+.bienvenida{
+    width: 100%;
+    height: 800px;
+   
+}
+
+.bienvenida img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.evento-imagen{
+    width: 100px;
+    height: 100px;
+    border: 3px solid black;
+}
+
+.evento-imagen img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.card {
+    width: 18rem;
+    height: 25rem; /* Altura fija para todas las cartas */
+    overflow: hidden; /* Oculta cualquier contenido que exceda la altura */
+}
+
+.card-img-top {
+    height: 60%; /* La imagen ocupará el 60% de la altura de la carta */
+    object-fit: cover; /* Ajusta la imagen para que se recorte y mantenga proporción */
+}
+
+.card-body {
+    height: 40%; /* El contenido ocupará el 40% restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+
+
+
+.container-compra{
+    height: 100vh;
+    margin: 70px 0 0 0;
+    max-width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto 200px;
+    grid-template-rows: 100px auto;
+    gap: 10px;
+    color: white;
+    
+}
+
+
+.container-compra i{
+    color: black;
+}
+
+.container-compra .titulo-compra{
+   
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 200px;
+    grid-template-rows: auto;
+    
+}
+
+.titulo-compra .nombre-evento{
+    
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+
+}
+
+.titulo-compra .fecha-evento{
+    
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    margin-left: 15px;
+    margin-top: 40px;
+    padding-top: 20px;
+
+    display: flex;
+    
+
+}
+
+.fecha-evento > h5{
+    margin-left: 5px;
+}
+.fecha-evento > i{
+    margin-top: 4px;
+    
+}
+
+.titulo-compra .lugar-evento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 2px solid black;
+}
+
+.lugar-evento > h4{
+    margin-left: 3px;
+
+}
+.lugar-evento > i{
+    margin-bottom: 5px;
+    
+}
+
+
+
+.container-compra .datos-compra{
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    height: fit-content;
+
+}
+
+
+.evento-descripcion{
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.evento-descripcion > p{
+    margin-left: 5px;
+    
+}
+
+.evento-descripcion > img{
+    border: 2px solid black;
+    border-radius: 10px;
+    width:200px;
+    height: 100px;
+    margin-bottom: 10px;
+    
+}
+
+
+
+.evento-precio{
+    display: flex;
+    border-bottom: 2px solid black;
+    padding: 5px;
+}
+
+.evento-precio > i{
+    margin-top: 15px;
+}
+
+.evento-precio > p{
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.evento-precio > input,
+.evento-cantidad > input{
+    margin-left: 5px;
+    margin-top: 10px;
+    border-radius: 50px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    background-color: dimgray;
+}
+
+.evento-cantidad{
+    display: flex;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+.evento-cantidad > p{
+    margin-top: 10px;
+}
+
+
+
+.boton-compra > .btn{
+    color:white;
+}
+
+.boton-compra > .btn:hover{
+    color: black;
+}
+
+.modal-footer  .btn{
+    color: black;
+}
+.modal-footer  .btn:hover{
+    color: white;
+}
+.modal-content{
+    background-color: #a6a6a6;
+    ;
+}
+
+.modal-body, .modal-title{
+    color: black;
+}
+
+
+
+
+
+
+
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .container-compra {
+        grid-template-columns: 1fr; /* Cambia la disposición a una sola columna */
+    }
+    
+    .titulo-compra {
+        grid-template-columns: 1fr; /* Título en una columna */
+    }
+
+    .datos-compra, .imagen-compra {
+        margin: 10px; /* Espaciado menor */
+    }
+
+    .evento-precio input, .evento-cantidad input {
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: left;
+    }
+}
+
+/* Pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container-compra {
+        grid-template-columns: 1fr 1fr; /* Dos columnas para tabletas */
+    }
+    
+    .titulo-compra {
+        grid-template-columns: 1fr 0.5fr; /* Ajusta la proporción de columnas */
+    }
+
+    .datos-compra, .imagen-compra {
+        margin: 15px; /* Espaciado adaptado */
+    }
+}
+
+
+.mis-entradas{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+
+.mis-entradas > div{
+    margin: 10px;
+    flex: 1;
+}
+.mis-entradas img{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin-top: 20px;
+
+}
+
+
+
+
+.resumen-header{
+    display: flex;
+    align-items:  center;
+    
+}
+
+.resumen-header img{
+    height: 100px;
+    width: 100px;
+}
+
+
+.resumen-header > div{ 
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.auth-main{
+    background-color: #E6E6E6;
+    color: black;
+    border: 2px solid white;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 20px 20px 50px 15px black;
+}
+
+.auth-main input{
+    border-radius: 20px;
+    background-color: #E6E6E6;
+    border-color: black;
+    outline: none;
+  
+}
+
+ .auth-main input:focus {
+    background-color: #E6E6E6; /* Mantiene el fondo original */
+    color: black; /* Mantiene el color original del texto */
+    outline: solid 3px black; /* Elimina el borde azul por defecto en algunos navegadores */
+}
+
+.auth-main button{
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    margin: 5px;
+    height: 50px;
+   
+}
+
+
+
+
+.auth-main p{
+   background-color: beige;
+    width: fit-content;
+    padding: 5px;
+    margin-top: 2px;
+}
+
+.auth-main p a{
+    margin-left: 2px;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.auth-main > div >img{
+    width: 150px;
+    height: 150px;
+}
+
+
+.auth-main > div{
+    display: flex;
+    justify-content: center;
+}
+
+section{
+    margin-top: 50px;
+}
+
+section ul{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+
+}
+
+section ul li{
+    border: 2px solid black;
+    box-shadow: 20px 20px 50px 15px black;
+    padding: 70px;
+    border-radius: 30px;
+   list-style-type: none;
+
+}
+
+
+section ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+
+}
+
+.text-center{
+    color: white;
+    border-bottom: 3px solid black;
+    padding-bottom: 30px;
+    margin-top: 50px;
+}
