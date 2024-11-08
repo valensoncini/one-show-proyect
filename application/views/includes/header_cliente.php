@@ -21,9 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <a class="nav-link btn btn-dark text-light" href="<?php echo base_url('User_Cliente/show_eventos');?>">Shows</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-dark text-light" href="<?php echo base_url('User_Cliente/preguntas_frecuentes');?>">Preguntas Frecuentes</a>
-                            </li>
+       
 
                             <li class="nav-item">
                                 <a class="nav-link btn btn-dark text-light" href="<?php echo base_url('User_Cliente/contacto');?>">Contacto</a>
@@ -36,6 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     </a>
                                     <?php $id = $this->session->userdata('cliente'); ?>
                                     <ul class="dropdown-menu bg-dark">
+										<li><a class="dropdown-item text-light  bg-dark" href="<?php echo base_url('User_Cliente/ver_perfil/') . $id; ?>">Perfil</a></li>
                                         <li><a class="dropdown-item text-light  bg-dark" href="<?php echo base_url('User_Cliente/mostrar_mis_entradas/') . $id; ?>">Mis Entradas</a></li>
                                         <li><a class="dropdown-item text-light  bg-dark" href="<?php echo  base_url('Auth/logout');?>">Log Out</a></li>
                                     </ul>

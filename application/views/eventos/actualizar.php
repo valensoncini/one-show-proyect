@@ -1,16 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');?>
 
-<?php $errors = $this->session->flashdata('image_errors');?>
+
 
 <div class="container-fluid mb-3">
     <h3 class="text-center">Actualizar Evento</h3>
-    <?php if(isset($errors)):?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $errors;?>
-            </div>
-    <?php endif;?> 
-
+  
     <form action="<?php echo  base_url('Eventos/actualizar_evento/') . $evento->idEvento; ?>" method="post" enctype="multipart/form-data">
         <label class="form-label">Nombre Evento</label>
         <input  class="form-control"type="text" name="nombre" value="<?php echo $evento->nombre; ?>" placeholder="Nombre" required>

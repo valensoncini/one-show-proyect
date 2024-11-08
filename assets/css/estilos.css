@@ -387,6 +387,13 @@ body{
     height: auto;
 }
 
+.card{
+	margin: 1rem;
+	background-color: #DDD0C8;
+	
+	
+}
+/*
 .mis-entradas > div{
     margin: 10px;
     flex: 1;
@@ -398,7 +405,7 @@ body{
     margin-top: 20px;
 
 }
-
+*/
 
 
 
@@ -519,3 +526,30 @@ section ul li a{
     padding-bottom: 30px;
     margin-top: 50px;
 }
+
+
+/*--------- */
+
+.contenedor-perfil{
+	width: 100%;
+	padding: 10px;
+	background-color: #DDD0C8;
+	font-size: 35px;
+	border: 2px solid white;
+	box-shadow: 10px 10px 20px black;
+	border-radius: 10px
+	
+}
+
+.container-fluid > h2{
+	background-color: #DDD0C8;
+	text-align: center;
+	margin-top: 5px;
+	font-size: 50px;
+	
+	box-shadow: 10px 10px 20px black;
+	border: 5px solid white;
+	
+	
+}
+

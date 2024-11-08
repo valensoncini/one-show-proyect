@@ -11,6 +11,7 @@ class User_Cliente extends CI_Controller
         $this->load->model('UserCliente_Model');
         $this->load->model('Clientes_Model');
         $this->load->model('Contacto_Model');
+		 $this->load->model('Auth_Model');
     }
 
 
@@ -190,16 +191,6 @@ class User_Cliente extends CI_Controller
 
     }
 
-    public function preguntas_frecuentes()
-    {
-        $data = [
-            'path' => 'user_cliente/preguntas',
-        ];
-
-        $this->load->view('user_cliente/home', $data);
-
-    }
-
     public function contacto()
     {
         $data = [
@@ -234,13 +225,101 @@ class User_Cliente extends CI_Controller
         $this->Contacto_Model->crear_consulta($data_consulta);
         $this->session->set_flashdata('success', 'Consulta recibida! Pronto nos estaremos contactando!');
         redirect('User_Cliente/contacto');
-
-
-
-
-
     }
-
+	
+	public function ver_perfil($id)
+	{
+		
+		$cliente = $this->Clientes_Model->get_by_id($id);
+		
+		$data = [
+			'path' => 'user_cliente/ver_perfil',
+			'cliente' => $cliente
+		];
+		
+		$this->load->view('user_cliente/home', $data);
+		
+	}
+	
+	public function vista_modificar_perfil($id)
+	{
+		$cliente = $this->Clientes_Model->get_by_id($id);
+		$data = [
+			'path' => 'user_cliente/modificar_perfil',
+			'cliente' => $cliente
+		];
+		
+		$this->load->view('user_cliente/home', $data);
+		
+	}
+	
+	public function modificar_perfil($id)
+	{
+		$cliente = $this->Clientes_Model->get_by_id($id);
+		$user = $this->Auth_Model->traer_por_mail($cliente->email);
+		
+		if($cliente != null && $user != null)
+		{
+			$data_cliente = [
+				'nombre_completo' => $this->input->post('nombre'),
+				'identificacion' => $this->input->post('ide'),
+				'email' => $this->input->post('email'),
+				'telefono' => $this->input->post('telefono')
+			];
+			$data_user = [
+				'email' =>$this->input->post('email')
+			];
+			
+			$this->session->set_userdata('email', $this->input->post('email'));
+			$this->Auth_Model->actualizar_user($user->id_user, $data_user);
+			$this->Clientes_Model->actualizar_cliente($id, $data_cliente);
+			redirect('User_Cliente/ver_perfil/'. $id);
+			
+			
+		}else
+		{
+			$this->session->set_flashdata('error_modi', 'Hubo un error con la modificacion');
+			redirect('User_Cliente/vista_modificar_perfil/' . $id);
+		}
+		
+		
+	}
+	
+	public function desactivar_cuenta($id)
+	{
+		
+		$cliente = $this->Clientes_Model->get_by_id($id);
+		$user = $this->Auth_Model->traer_por_mail($cliente->email);
+		
+		if($cliente != null && $user != null)
+		{
+			
+			$data_cliente = [
+				'estado' => 'inactivo'
+			];
+			$data_user = [
+				'estado' => 'inactivo'
+			];
+			
+			$this->Auth_Model->actualizar_user($user->id_user, $data_user);
+			$this->Clientes_Model->actualizar_cliente($id, $data_cliente);
+			redirect('Auth/forms_login');
+			
+			
+			
+			
+		}else
+		{
+			$this->session->set_flashdata('error_desactivacion', 'Hubo un error con la desactivacion de tu cuenta! intente mas tarde!');
+			redirect('User_Cliente/ver_perfil/' . $id);
+		}
+		
+			
+			
+			
+		
+		
+	}
 
 
     

@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <li><a href="<?php echo base_url('Eventos/index'); ?>">Ver Eventos</a></li>
             <li><a href="<?php echo base_url('Clientes/index'); ?>">Ver Clientes</a></li>
             <li><a href="<?php echo base_url('Ventas/index'); ?>">Ver Ventas</a></li>
+			<li><a href="<?php echo base_url('Contacto/index'); ?>">Ver Contactos</a></li>
         </ul>
     </section>
 

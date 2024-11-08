@@ -58,7 +58,7 @@ class Auth extends CI_Controller
         //Vista que va a ver el cliente principalmente, el cual guardo sus datos como cliente y los datos de usuario
 
         $this->form_validation->set_rules('nombre_completo', 'NOMBRE COMPLETO', 'required');
-        $this->form_validation->set_rules('mail', 'EMAIL', 'required|is_unique[users.email]');
+        $this->form_validation->set_rules('mail', 'EMAIL', 'required|valid_email|is_unique[users.email]');
         $this->form_validation->set_rules('iden', 'IDENTIFICACION', 'required|max_length[15]|min_length[8]');
         $this->form_validation->set_rules('tel', 'TELEFONO', 'required');
         $this->form_validation->set_rules('pass', 'CONTRASEÑA', 'required|min_length[6]|max_length[15]');
@@ -69,18 +69,22 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('errors', $this->form_validation->error_array());
             redirect('Auth/forms_registro');
         }
+		
+		
 
         $user_data = [
             'email' => $this->input->post('mail'),
             'contraseña' => password_hash($this->input->post('pass'), PASSWORD_DEFAULT),
-            'rol' => 'cliente'
+            'rol' => 'cliente',
+			'estado' => 'activo'
         ];
 
         $client_data = [
             'email' => $this->input->post('mail'),
             'nombre_completo' => $this->input->post('nombre_completo'),
             'identificacion' => $this->input->post('iden'),
-            'telefono' => $this->input->post('tel')
+            'telefono' => $this->input->post('tel'),
+			'estado' => 'activo'
         ];
 
 
@@ -91,6 +95,7 @@ class Auth extends CI_Controller
 
 
     }
+	
 
     public function forms_login()
     {
@@ -120,21 +125,37 @@ class Auth extends CI_Controller
 
         if($user != null && password_verify($this->input->post('pass'), $user->contraseña))
         {
-            $this->session->set_userdata('id_user', $user->id_user);
-            $this->session->set_userdata('cliente', $cliente->id_cliente);
-            $this->session->set_userdata('email', $user->email);
-            $this->session->set_userdata('rol', $user->rol);
-            $this->session->set_userdata('logged', true);
-
-            if($user->rol == 'admin')
-            {   
-                $this->load->view('home/home_admin');
-            }elseif($user->rol == 'cliente')
-            {
-               redirect('User_Cliente/index');
-            }
-
-        }else{
+			
+			if($user->rol == 'admin')
+			{   
+					$this->session->set_userdata('id_user', $user->id_user);
+				    $this->session->set_userdata('cliente', $cliente->id_cliente);
+					$this->session->set_userdata('email', $user->email);
+					$this->session->set_userdata('rol', $user->rol);
+					$this->session->set_userdata('logged', true);
+					$this->load->view('home/home_admin');
+			}elseif($user->rol == 'cliente')
+			{
+				if($user->estado == 'activo' && $cliente->estado == 'activo')
+				{
+						$this->session->set_userdata('id_user', $user->id_user);
+						$this->session->set_userdata('cliente', $cliente->id_cliente);
+						$this->session->set_userdata('email', $user->email);
+						$this->session->set_userdata('rol', $user->rol);
+						$this->session->set_userdata('logged', true);
+						redirect('User_Cliente/index');
+				}elseif($user->estado == 'inactivo' && $cliente->estado == 'inactivo')
+				{
+					$this->session->set_flashdata('errors', ['login_error' => 'Credenciales Incorrectos']);
+					redirect('Auth/forms_login');
+				}
+			}
+			
+			
+			
+			
+        }else
+		{
             $this->session->set_flashdata('errors', ['login_error' => 'Credenciales Incorrectos']);
             redirect('Auth/forms_login');
         }

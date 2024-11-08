@@ -37,5 +37,9 @@ class Auth_Model extends CI_Model
     {
         $this->db->delete('users', ['id_user' => $id] );
     }
+	
+	
 
 }
+
+
