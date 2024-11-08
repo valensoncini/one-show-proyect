@@ -59,6 +59,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     <li><a class="dropdown-item" href="<?php echo base_url('Ventas/index');?>">Lista Ventas</a></li>
                                 </ul>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Contacto
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="<?php echo base_url('Contacto/index');?>">Lista Contactos</a></li>
+                                </ul>
+                            </li>
                     </ul>
               </div>
            </div>

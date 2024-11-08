@@ -22,4 +22,12 @@ class Contacto_Model extends CI_Model
     }
 
 
+    
+    public function get_contacto_by_id($id)
+    {
+        $query = $this->db->query("SELECT * FROM contacto where id_contacto = ?", array($id));
+        return $query->row();
+    }
+
+
 }
